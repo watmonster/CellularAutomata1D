@@ -1,21 +1,29 @@
 package Graphics;
 
 import processing.core.PApplet;
+import java.util.ArrayList;
 
 public class CellMain extends PApplet{
 
-    private Cell cell = new Cell(this,0,100);
+    private ArrayList<Cell> cells = new ArrayList<Cell>();
 
     public void settings(){
-        size(cell.sizeInt,cell.sizeInt);
+        cells.add(new Cell(this,0,100,0,0));
+        cells.add(new Cell(this,0,100,1,0));
+        size(cells.get(0).sizeInt*cells.size(),cells.get(0).sizeInt);
     }
 
     public void draw(){
-        cell.render();
+        for(Cell c: cells){
+            c.render();
+        }
     }
 
     public void mouseClicked(){
-        cell.changeColor();
+        System.out.println("x = " + mouseX + ", y = "+ mouseY);
+        int col = floor(mouseX/100);
+        System.out.println(col);
+        cells.get(col).changeColor();
     }
 
     public static void main(String[] args){

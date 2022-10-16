@@ -8,32 +8,36 @@ public class Cell{
 
     public int state;
     public int sizeInt;
+    public int col;
+    public int row;
 
-    public Cell(PApplet sketch, int state, int sizeInt){
+    public Cell(PApplet sketch, int state, int sizeInt, int col, int row){
         this.sketch=sketch;
         this.state=state;
         this.sizeInt = sizeInt;
+        this.col = col;
+        this.row = row;
     }
 
     public void render(){
         if(state==0){
             sketch.fill(255);
-            System.out.println("filled white!");
+            //System.out.println("filled white!");
         }else{
             sketch.fill(0);
-            System.out.println("filled black!");
+            //System.out.println("filled black!");
         }
-        sketch.rect(0.0f,0.0f,(float)sizeInt,(float)sizeInt);
+        sketch.rect((float)col*100,(float)row*100,(float)sizeInt,(float)sizeInt);
     }
 
     public void changeColor(){
         if(state == 0){
             sketch.fill(0);
-            sketch.rect(0.0f,0.0f,(float)sizeInt,(float)sizeInt);
+            sketch.rect((float)col*100,(float)row*100,(float)sizeInt,(float)sizeInt);
             state = 1;
         }else if(state == 1){
             sketch.fill(255);
-            sketch.rect(100.0f,100.0f,(float)sizeInt,(float)sizeInt);
+            sketch.rect((float)col*100,(float)row*100,(float)sizeInt,(float)sizeInt);
             state = 0;
         }
     }
