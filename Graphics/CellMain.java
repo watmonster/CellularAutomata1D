@@ -1,34 +1,41 @@
 package Graphics;
 
 import processing.core.PApplet;
-import java.util.ArrayList;
 
 public class CellMain extends PApplet{
 
-    private ArrayList<Cell> cells = new ArrayList<Cell>();
+    private CellGrid cg;
+
+    public int psize;
+    public int rows;
+    public int cols;
+
+    public CellMain(int psize, int rows, int cols){
+        this.psize = psize;
+        this.rows = rows;
+        this.cols = cols;
+        this.cg = new CellGrid(this,this.rows,this.cols,(int)psize/rows);
+    }
 
     public void settings(){
-        cells.add(new Cell(this,0,100,0,0));
-        cells.add(new Cell(this,0,100,1,0));
-        size(cells.get(0).sizeInt*cells.size(),cells.get(0).sizeInt);
+        size(psize,psize);
     }
 
     public void draw(){
-        for(Cell c: cells){
-            c.render();
-        }
+        cg.render();
     }
 
     public void mouseClicked(){
         System.out.println("x = " + mouseX + ", y = "+ mouseY);
         int col = floor(mouseX/100);
-        System.out.println(col);
-        cells.get(col).changeColor();
+        int row = floor(mouseY/100);
+        System.out.println(col + ", " + row);
+        cg.cellAt(row,col).changeColor();
     }
 
     public static void main(String[] args){
 		String[] processingArgs = {"MySketch"};
-		CellMain mySketch = new CellMain();
+		CellMain mySketch = new CellMain(1000,10,10);
 		PApplet.runSketch(processingArgs, mySketch);
 	}
 }
