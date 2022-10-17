@@ -9,12 +9,14 @@ public class CellMain extends PApplet{
     public int psize;
     public int rows;
     public int cols;
+    public int cellSize;
 
     public CellMain(int psize, int rows, int cols){
         this.psize = psize;
         this.rows = rows;
         this.cols = cols;
-        this.cg = new CellGrid(this,this.rows,this.cols,(int)psize/rows);
+        this.cellSize = (int)psize/rows;
+        this.cg = new CellGrid(this,this.rows,this.cols,cellSize);
     }
 
     public void settings(){
@@ -27,15 +29,15 @@ public class CellMain extends PApplet{
 
     public void mouseClicked(){
         System.out.println("x = " + mouseX + ", y = "+ mouseY);
-        int col = floor(mouseX/100);
-        int row = floor(mouseY/100);
+        int col = floor(mouseX/(cellSize));
+        int row = floor(mouseY/(cellSize));
         System.out.println(col + ", " + row);
         cg.cellAt(row,col).changeColor();
     }
 
     public static void main(String[] args){
 		String[] processingArgs = {"MySketch"};
-		CellMain mySketch = new CellMain(1000,10,10);
+		CellMain mySketch = new CellMain(1000,17,17);
 		PApplet.runSketch(processingArgs, mySketch);
 	}
 }

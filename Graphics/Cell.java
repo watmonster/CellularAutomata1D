@@ -27,17 +27,13 @@ public class Cell{
             sketch.fill(0);
             //System.out.println("filled black!");
         }
-        sketch.rect((float)col*100,(float)row*100,(float)sizeInt,(float)sizeInt);
+        sketch.rect((float)col*sizeInt,(float)row*sizeInt,(float)sizeInt,(float)sizeInt);
     }
 
     public void changeColor(){
         if(state == 0){
-            sketch.fill(0);
-            sketch.rect((float)col*100,(float)row*100,(float)sizeInt,(float)sizeInt);
             state = 1;
         }else if(state == 1){
-            sketch.fill(255);
-            sketch.rect((float)col*100,(float)row*100,(float)sizeInt,(float)sizeInt);
             state = 0;
         }
     }
