@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import Graphics.CellGrid;
 import Graphics.CellGridDisplay;
 import Helpers.Base10ToBase2;
@@ -7,7 +10,8 @@ public class CellAutoMain {
 
     public static int displaysize = 1000;
     public static int numrows = 101;
-    public static int rule = 73;
+    public static int rule = 30;
+    public static ArrayList<Integer> onecols = new ArrayList<Integer>(Arrays.asList(50));
     
     public static int pythmod(int num, int mod){
         //handle mods of negative numbers like python does, not like java
@@ -57,7 +61,10 @@ public class CellAutoMain {
 		PApplet.runSketch(processingArgs, mySketch);
 
         //make the middle top cell black
-        mySketch.cg.cellAt(0,numrows/2).changeColor();
+        //mySketch.cg.cellAt(0,numrows/2).changeColor();
+        for(Integer i : onecols){
+            mySketch.cg.cellAt(0,i).changeColor();
+        }
 
         //apply a rule to the first row to make the second row
         for(int row = 1; row < numrows; row++){
