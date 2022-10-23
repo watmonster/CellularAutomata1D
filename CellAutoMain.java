@@ -7,7 +7,7 @@ public class CellAutoMain {
 
     public static int displaysize = 1000;
     public static int numrows = 101;
-    public static int rule = 150;
+    public static int rule = 73;
     
     public static int pythmod(int num, int mod){
         //handle mods of negative numbers like python does, not like java
