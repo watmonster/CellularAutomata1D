@@ -31,6 +31,7 @@ public class Cell{
     }
 
     public void changeColor(){
+        //TODO: make it change color by itself
         if(state == 0){
             state = 1;
         }else if(state == 1){
