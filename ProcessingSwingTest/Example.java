@@ -11,7 +11,7 @@ public class Example extends PApplet {
     public String outputs[] = new String[props.length];
     public int outputsInt[] = new int[props.length];
 
-    public void settings(){
+    public void settings() {
         size(200, 200);
     }
 
@@ -106,7 +106,11 @@ public class Example extends PApplet {
     public void updateOutputsInt() {
         updateOutputs();
         for (int i = 0; i < props.length; i++) {
-            outputsInt[i] = Integer.parseInt(outputs[i]);
+            try{
+                outputsInt[i] = Integer.parseInt(outputs[i]);
+            }catch (java.lang.NumberFormatException e){
+                System.out.println("Can't parse input as integer: " + "\"" + outputs[i]+ "\"");
+            }
         }
     }
 }
