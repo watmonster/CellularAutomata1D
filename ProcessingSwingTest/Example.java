@@ -97,19 +97,16 @@ public class Example extends PApplet {
         props[10].setText("1");
     }
 
-    public void updateOutputs() {
-        for (int i = 0; i < props.length; i++) {
-            outputs[i] = props[i].getText();
-        }
-    }
-
     public void updateOutputsInt() {
-        updateOutputs();
+        // check whether any output has changed
         for (int i = 0; i < props.length; i++) {
-            try{
-                outputsInt[i] = Integer.parseInt(outputs[i]);
-            }catch (java.lang.NumberFormatException e){
-                System.out.println("Can't parse input as integer: " + "\"" + outputs[i]+ "\"");
+            if (outputs[i] == null || !(outputs[i].equals(props[i].getText()))) {
+                outputs[i] = props[i].getText();
+                try {
+                    outputsInt[i] = Integer.parseInt(outputs[i]);
+                } catch (java.lang.NumberFormatException e) {
+                    System.out.println("Can't parse input as integer: " + "\"" + outputs[i] + "\"");
+                }
             }
         }
     }
