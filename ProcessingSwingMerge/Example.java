@@ -40,7 +40,7 @@ public class Example extends PApplet {
         description_added[10] = SwingConstructor.list_col(new JLabel("w:"), props[10]);
         JButton resetButton = new JButton("Reset");
         // Adds the method reset to the button
-        SwingConstructor.callMethodOnClick(resetButton, "reset");
+        SwingConstructor.callMethodOnClick(resetButton, "reset", this);
 
         // Joins components horizonaly
         JPanel prompt = SwingConstructor.list_row(

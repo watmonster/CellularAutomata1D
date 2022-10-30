@@ -19,7 +19,7 @@ public class SwingConstructor {
 
     public static int offset = 15;
 
-    public static ActionListener callMethodOnClick(String method) {
+    public static ActionListener callMethodOnClick(String method, PApplet pa) {
         final String parse = method;
         return new ActionListener() {
 
@@ -27,16 +27,16 @@ public class SwingConstructor {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    Method functions = genericPapplet.getClass().getMethod(parse, new Class[] {});
-                    functions.invoke(genericPapplet, new Object[] {});
+                    Method functions = pa.getClass().getMethod(parse, new Class[] {});
+                    functions.invoke(pa, new Object[] {});
                 } catch (Exception exc) {
                 }
             }
         };
     }
 
-    public static void callMethodOnClick(AbstractButton button, String method) {
-        button.addActionListener(callMethodOnClick(method));
+    public static void callMethodOnClick(AbstractButton button, String method, PApplet pa) {
+        button.addActionListener(callMethodOnClick(method, pa));
     }
 
     public static JPanel list_col(Container... c) {

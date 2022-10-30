@@ -86,7 +86,5 @@ public class CellAutoRunner {
         //apply the rule to row rownum to make row rownum+1
     }
 
-    public void applyRule30(){
-        applyRule(30);
-    }
+    
 }
