@@ -1,4 +1,4 @@
-package ProcessingSwingTest;
+package ProcessingSwingMerge;
 //from: https://discourse.processing.org/t/how-to-use-swing-components-with-processing-3-3-6/36219
 
 import java.awt.Container;

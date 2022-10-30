@@ -1,4 +1,4 @@
-package ProcessingSwingTest;
+package ProcessingSwingMerge;
 
 import java.awt.*;
 //import java.awt.event.*;
@@ -12,7 +12,7 @@ public class Example extends PApplet {
     public int outputsInt[] = new int[props.length];
 
     public void settings() {
-        size(200, 200);
+        size(500, 500);
     }
 
     public void setup() {

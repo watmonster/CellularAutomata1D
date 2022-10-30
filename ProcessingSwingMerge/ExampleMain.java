@@ -1,4 +1,4 @@
-package ProcessingSwingTest;
+package ProcessingSwingMerge;
 
 import processing.core.PApplet;
 
