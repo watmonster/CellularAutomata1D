@@ -85,4 +85,8 @@ public class CellAutoRunner {
         //for rownum = 0 rownum < numrows rownum ++
         //apply the rule to row rownum to make row rownum+1
     }
+
+    public void applyRule30(){
+        applyRule(30);
+    }
 }
