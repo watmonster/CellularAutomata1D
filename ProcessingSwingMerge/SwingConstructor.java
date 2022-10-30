@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.lang.reflect.*;
 import processing.core.PApplet;
 
-class SwingConstructor {
+public class SwingConstructor {
     public static PApplet genericPapplet;
 
     public static void setPApplet(PApplet p) {

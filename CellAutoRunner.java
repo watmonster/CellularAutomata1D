@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -6,7 +8,7 @@ import Graphics.CellGridDisplay;
 import Helpers.Base10ToBase2;
 import processing.core.PApplet;
 
-public class CellAutoMain {
+public class CellAutoRunner {
 
     public static int displaysize = 1000;
     public static int numrows = 101;
