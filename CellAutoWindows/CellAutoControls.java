@@ -48,6 +48,6 @@ public class CellAutoControls {
         JFrame mainWindow = SwingConstructor.merge(SwingConstructor.scrollable(prompt, 190, car.cgdisp.height), "East");
         mainWindow.setVisible(true);
         mainWindow.setTitle("Example");
-        // car.applyRule(30);
+        car.applyRule(30);
     }
 }
