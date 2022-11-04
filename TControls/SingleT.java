@@ -10,18 +10,18 @@ public class SingleT {
     public int ruleInput; // num 0-7 which represents the top 3 cells of the T
     public int ruleOutput = 0;// num 0-1 which represents the bottom cell of the T
     private ClickableCell cc;
-    private Cell c0;
-    private Cell c1;
-    private Cell c2;
+    private ClickableCell c0;
+    private ClickableCell c1;
+    private ClickableCell c2;
     private PApplet sketch;
 
     public SingleT(PApplet sketch, int ruleInput) {
         this.ruleInput = ruleInput;
         this.sketch = sketch;
-        this.cc = new ClickableCell(this.sketch, 0, 50, 1, 1);
-        this.c0 = new Cell(this.sketch, ruleInputSet(ruleInput).get(0), 50, 0, 0);
-        this.c1 = new Cell(this.sketch, ruleInputSet(ruleInput).get(1), 50, 1, 0);
-        this.c2 = new Cell(this.sketch, ruleInputSet(ruleInput).get(2), 50, 2, 0);
+        this.cc = new ClickableCell(this.sketch, 0, 50, 1, 1, ruleInput * 160, 0);
+        this.c0 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(0), 50, 0, 0, ruleInput * 160, 0);
+        this.c1 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(1), 50, 1, 0, ruleInput * 160, 0);
+        this.c2 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(2), 50, 2, 0, ruleInput * 160, 0);
     }
 
     // public void settings(){
@@ -53,12 +53,12 @@ public class SingleT {
     }
 
     // public static void runthething() {
-    //     String[] processingArgs = { "SingleT" };
-    //     SingleT singleT = new SingleT(this.sketch, ruleInput);
-    //     PApplet.runSketch(processingArgs, singleT);
+    // String[] processingArgs = { "SingleT" };
+    // SingleT singleT = new SingleT(this.sketch, ruleInput);
+    // PApplet.runSketch(processingArgs, singleT);
     // }
 
-    public void draw() {
+    public void renderT() {
         cc.render();
         c0.render();
         c1.render();
@@ -66,6 +66,6 @@ public class SingleT {
     }
 
     // public static void main(String[] args) {
-    //     runthething();
+    // runthething();
     // }
 }
