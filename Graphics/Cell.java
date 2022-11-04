@@ -1,5 +1,6 @@
 package Graphics;
 
+import Helpers.Logging;
 import processing.core.PApplet;
 
 public class Cell{
@@ -17,6 +18,14 @@ public class Cell{
         this.sizeInt = sizeInt;
         this.col = col;
         this.row = row;
+    }
+
+    public void setState(int newState){
+        if(newState == 0 || newState == 1){
+            this.state = newState;
+        }else{
+            Logging.logWithTimeStamp("Invalid state: " + newState);
+        }
     }
 
     public void render(){

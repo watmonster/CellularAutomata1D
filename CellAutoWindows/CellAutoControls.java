@@ -39,7 +39,7 @@ public class CellAutoControls {
         applyRuleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Logging.logWithTimeStamp("Button pressed");
-                applyRule30(); //this doesn't seem to be working TODO
+                car.applyRule(Integer.parseInt(ruleField.getText()));
             }
         });
         JPanel prompt = SwingConstructor.list_row(desc_added, applyRuleButton);

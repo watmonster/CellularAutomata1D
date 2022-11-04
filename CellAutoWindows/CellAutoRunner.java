@@ -68,9 +68,7 @@ public class CellAutoRunner {
         //make a CellGrid
 		for(int row = 0; row < numrows; row++){
             for(int col = 0; col < numrows; col++){
-                if(cgdisp.cg.cellAt(row,col).state == 1){
-                    cgdisp.cg.cellAt(row,col).changeColor();
-                }
+                cgdisp.cg.cellAt(row,col).setState(0);
             }
         }
 
