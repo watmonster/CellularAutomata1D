@@ -66,7 +66,13 @@ public class CellAutoRunner {
     public void applyRule(int ruleNum) {
 
         //make a CellGrid
-		
+		for(int row = 0; row < numrows; row++){
+            for(int col = 0; col < numrows; col++){
+                if(cgdisp.cg.cellAt(row,col).state == 1){
+                    cgdisp.cg.cellAt(row,col).changeColor();
+                }
+            }
+        }
 
         //make the middle top cell black
         //mySketch.cg.cellAt(0,numrows/2).changeColor();

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import ProcessingSwingMerge.SwingConstructor;
 import processing.core.PApplet;
+import Helpers.Logging;
 
 public class CellAutoControls {
 
@@ -37,7 +38,7 @@ public class CellAutoControls {
         // car.cgdisp);
         applyRuleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("yay");
+                Logging.logWithTimeStamp("Button pressed");
                 applyRule30(); //this doesn't seem to be working TODO
             }
         });
@@ -48,6 +49,6 @@ public class CellAutoControls {
         JFrame mainWindow = SwingConstructor.merge(SwingConstructor.scrollable(prompt, 190, car.cgdisp.height), "East");
         mainWindow.setVisible(true);
         mainWindow.setTitle("Example");
-        car.applyRule(30);
+        //car.applyRule(30);
     }
 }
