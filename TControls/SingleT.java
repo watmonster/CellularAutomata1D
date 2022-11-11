@@ -9,19 +9,24 @@ public class SingleT {
 
     public int ruleInput; // num 0-7 which represents the top 3 cells of the T
     public int ruleOutput = 0;// num 0-1 which represents the bottom cell of the T
+    public int cellSize;
+    public int tspacing;
     private ClickableCell cc;
     private ClickableCell c0;
     private ClickableCell c1;
     private ClickableCell c2;
     private PApplet sketch;
 
-    public SingleT(PApplet sketch, int ruleInput) {
+    public SingleT(PApplet sketch, int ruleInput, int cellSize, int tspacing) {
         this.ruleInput = ruleInput;
         this.sketch = sketch;
-        this.cc = new ClickableCell(this.sketch, 0, 50, 1, 1, ruleInput * 160, 0);
-        this.c0 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(0), 50, 0, 0, ruleInput * 160, 0);
-        this.c1 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(1), 50, 1, 0, ruleInput * 160, 0);
-        this.c2 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(2), 50, 2, 0, ruleInput * 160, 0);
+        this.cellSize = cellSize;
+        this.tspacing = tspacing;
+        int xoffset = ruleInput*(cellSize*3 + tspacing);
+        this.cc = new ClickableCell(this.sketch, 0, this.cellSize, 1, 1, xoffset, 0);
+        this.c0 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(0), this.cellSize, 0, 0, xoffset, 0);
+        this.c1 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(1), this.cellSize, 1, 0, xoffset, 0);
+        this.c2 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(2), this.cellSize, 2, 0, xoffset, 0);
     }
 
     // public void settings(){
@@ -48,7 +53,7 @@ public class SingleT {
         }
     }
 
-    public void mouseClicked() {
+    public void click() {
         cc.mc();
     }
 

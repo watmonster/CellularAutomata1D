@@ -8,16 +8,16 @@ public class ClickableCell{
     private PApplet sketch;
 
     public int state;
-    public int sizeInt;
+    public int cellSize;
     public int col;
     public int row;
     public int xoffset;
     public int yoffset;
 
-    public ClickableCell(PApplet sketch, int state, int sizeInt, int col, int row, int xoffset, int yoffset){
+    public ClickableCell(PApplet sketch, int state, int cellSize, int col, int row, int xoffset, int yoffset){
         this.sketch=sketch;
         this.state=state;
-        this.sizeInt = sizeInt;
+        this.cellSize = cellSize;
         this.col = col;
         this.row = row;
         this.xoffset = xoffset;
@@ -40,7 +40,7 @@ public class ClickableCell{
             sketch.fill(0);
             //System.out.println("filled black!");
         }
-        sketch.rect((float)col*sizeInt+xoffset,(float)row*sizeInt+yoffset,(float)sizeInt,(float)sizeInt);
+        sketch.rect((float)col*cellSize+xoffset,(float)row*cellSize+yoffset,(float)cellSize,(float)cellSize);
     }
 
     public void mc(){
