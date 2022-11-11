@@ -28,7 +28,10 @@ public class TControlsMain extends PApplet{
     }
 
     public void mouseClicked(){
-
+        //System.out.println(mouseX + ", " + mouseY);
+        int tIndex = (int)(mouseX/(cellSize*3 + tspacing));
+        System.out.println(tIndex);
+        ts.get(tIndex).click();
     }
 
     public static void main(String[] args) {
