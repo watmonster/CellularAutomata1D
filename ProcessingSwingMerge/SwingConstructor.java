@@ -80,15 +80,17 @@ public class SwingConstructor {
         return ret;
     }
 
-    //public static JFrame merge(Container swingContent, String where) {
-        //PApplet programm = genericPapplet;
+    // public static JFrame merge(Container swingContent, String where) {
+    // PApplet programm = genericPapplet;
     public static JFrame mergePAppletSwing(PApplet programm, Container swingContent, String where) {
 
         // Get a Container of the PApplet
-        // JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) programm.getSurface().getNative())
-        //         .getFrame();
+        // JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas)
+        // programm.getSurface().getNative())
+        // .getFrame();
         // Container processing_content = mainFrame.getContentPane();
-        // processing_content.setPreferredSize(new Dimension(programm.width, programm.height));
+        // processing_content.setPreferredSize(new Dimension(programm.width,
+        // programm.height));
 
         Container processing_content = getPAppletContent(programm);
 
@@ -101,15 +103,20 @@ public class SwingConstructor {
         window.add(processing_content, where);
 
         // Get rid of evidence
-        //mainFrame.setVisible(false);
-        window.setSize(new Dimension(programm.width + swingContent.getPreferredSize().width,
-                Math.max(programm.height, swingContent.getPreferredSize().height)));
+        // mainFrame.setVisible(false);
+        if (where == "West" || where == "East") {
+            window.setSize(new Dimension(programm.width + swingContent.getPreferredSize().width,
+                    Math.max(programm.height, swingContent.getPreferredSize().height)));
+        } else {
+            window.setSize(new Dimension(Math.max(programm.width, swingContent.getPreferredSize().width),
+                    programm.height + swingContent.getPreferredSize().height));
+        }
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         return window;
     }
 
-    public static Container getPAppletContent(PApplet p){
+    public static Container getPAppletContent(PApplet p) {
         JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) p.getSurface().getNative())
                 .getFrame();
         Container processing_content = mainFrame.getContentPane();
@@ -120,30 +127,27 @@ public class SwingConstructor {
 
     public static JFrame mergePAppletPApplet(PApplet p1, PApplet p2, String where) {
 
-        // Get a Container of the PApplet
-        JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) p1.getSurface().getNative())
-                .getFrame();
-        Container processing_content = mainFrame.getContentPane();
-        processing_content.setPreferredSize(new Dimension(p1.width, p1.height));
-
-        JFrame mainFrame2 = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) p2.getSurface().getNative())
-                .getFrame();
-        Container processing_content2 = mainFrame2.getContentPane();
-        processing_content2.setPreferredSize(new Dimension(p2.width, p2.height));
+        // Get a Container of the PApplets
+        Container processing_content1 = getPAppletContent(p1);
+        Container processing_content2 = getPAppletContent(p2);
 
         // Create new Window
         JFrame window = new JFrame();
 
-        // // add swingContent
-        // window.add(swingContent);
-        // // add swingContent
-        // window.add(processing_content, where);
+        // add swingContent
+        window.add(processing_content1);
+        // add swingContent
+        window.add(processing_content2, where);
 
-        // // Get rid of evidence
+        // Get rid of evidence
         // mainFrame.setVisible(false);
-        // window.setSize(new Dimension(p1.width + swingContent.getPreferredSize().width,
-        //         Math.max(p1.height, swingContent.getPreferredSize().height)));
-        // window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        if (where == "West" || where == "East") {
+            window.setSize(new Dimension(p1.width + p2.width, Math.max(p1.height, p2.height)));
+        } else {
+            window.setSize(new Dimension(Math.max(p1.width, p2.width), p1.height + p2.height));
+        }
+
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         return window;
     }

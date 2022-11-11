@@ -66,7 +66,7 @@ public class Twopapplets extends PApplet {
         prompt.setPreferredSize(size_prompt);
 
         // Adds the contents of the processing window to the right (East)
-        JFrame mw1 = SwingConstructor.mergePAppletSwing(this, SwingConstructor.scrollable(prompt, 190, height), "East");
+        Container mw1 = (Container) SwingConstructor.mergePAppletSwing(this, SwingConstructor.scrollable(prompt, 190, height), "East");
         JFrame mainWindow = SwingConstructor.mergePAppletSwing(this, mw1, "East");
 
         mainWindow.setVisible(true);
