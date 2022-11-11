@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import processing.core.PApplet;
 
-public class Example extends PApplet {
+public class Twopapplets extends PApplet {
 
     public JTextField props[] = new JTextField[11];
     public String outputs[] = new String[props.length];
@@ -18,7 +18,7 @@ public class Example extends PApplet {
     public void setup() {
         // Sets the PApple (Processing program) to use for the Window maker. DO NOT USE
         // IN ANOTHER CLASS!
-        //SwingConstructor.setPApplet(this);
+        SwingConstructor.setPApplet(this);
 
         for (int i = 0; i < props.length; i++) {
             props[i] = new JTextField(10);
@@ -66,7 +66,8 @@ public class Example extends PApplet {
         prompt.setPreferredSize(size_prompt);
 
         // Adds the contents of the processing window to the right (East)
-        JFrame mainWindow = SwingConstructor.mergePAppletSwing(this, SwingConstructor.scrollable(prompt, 190, height), "East");
+        JFrame mw1 = SwingConstructor.mergePAppletSwing(this, SwingConstructor.scrollable(prompt, 190, height), "East");
+        JFrame mainWindow = SwingConstructor.mergePAppletSwing(this, mw1, "East");
 
         mainWindow.setVisible(true);
         mainWindow.setTitle("Example");

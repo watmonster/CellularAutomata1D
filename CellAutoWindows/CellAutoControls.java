@@ -46,7 +46,7 @@ public class CellAutoControls {
         Dimension size_prompt = prompt.getPreferredSize();
         size_prompt.width = 150;
         prompt.setPreferredSize(size_prompt);
-        JFrame mainWindow = SwingConstructor.merge(SwingConstructor.scrollable(prompt, 190, car.cgdisp.height), "East");
+        JFrame mainWindow = SwingConstructor.mergePAppletSwing(car.cgdisp, SwingConstructor.scrollable(prompt, 190, car.cgdisp.height), "East");
         mainWindow.setVisible(true);
         mainWindow.setTitle("Example");
         //car.applyRule(30);

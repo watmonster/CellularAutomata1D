@@ -80,24 +80,70 @@ public class SwingConstructor {
         return ret;
     }
 
-    public static JFrame merge(Container content, String where) {
-        PApplet programm = genericPapplet;
-        // Create new Window with Swing components
-        JFrame window = new JFrame();
-        window.add(content);
+    //public static JFrame merge(Container swingContent, String where) {
+        //PApplet programm = genericPapplet;
+    public static JFrame mergePAppletSwing(PApplet programm, Container swingContent, String where) {
 
-        // Transfer the Window
-        JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) programm.getSurface().getNative())
-                .getFrame();
-        Container processing_content = mainFrame.getContentPane();
-        processing_content.setPreferredSize(new Dimension(programm.width, programm.height));
+        // Get a Container of the PApplet
+        // JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) programm.getSurface().getNative())
+        //         .getFrame();
+        // Container processing_content = mainFrame.getContentPane();
+        // processing_content.setPreferredSize(new Dimension(programm.width, programm.height));
+
+        Container processing_content = getPAppletContent(programm);
+
+        // Create new Window
+        JFrame window = new JFrame();
+
+        // add swingContent
+        window.add(swingContent);
+        // add swingContent
         window.add(processing_content, where);
 
         // Get rid of evidence
-        mainFrame.setVisible(false);
-        window.setSize(new Dimension(programm.width + content.getPreferredSize().width,
-                Math.max(programm.height, content.getPreferredSize().height)));
+        //mainFrame.setVisible(false);
+        window.setSize(new Dimension(programm.width + swingContent.getPreferredSize().width,
+                Math.max(programm.height, swingContent.getPreferredSize().height)));
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        return window;
+    }
+
+    public static Container getPAppletContent(PApplet p){
+        JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) p.getSurface().getNative())
+                .getFrame();
+        Container processing_content = mainFrame.getContentPane();
+        processing_content.setPreferredSize(new Dimension(p.width, p.height));
+        mainFrame.setVisible(false);
+        return processing_content;
+    }
+
+    public static JFrame mergePAppletPApplet(PApplet p1, PApplet p2, String where) {
+
+        // Get a Container of the PApplet
+        JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) p1.getSurface().getNative())
+                .getFrame();
+        Container processing_content = mainFrame.getContentPane();
+        processing_content.setPreferredSize(new Dimension(p1.width, p1.height));
+
+        JFrame mainFrame2 = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) p2.getSurface().getNative())
+                .getFrame();
+        Container processing_content2 = mainFrame2.getContentPane();
+        processing_content2.setPreferredSize(new Dimension(p2.width, p2.height));
+
+        // Create new Window
+        JFrame window = new JFrame();
+
+        // // add swingContent
+        // window.add(swingContent);
+        // // add swingContent
+        // window.add(processing_content, where);
+
+        // // Get rid of evidence
+        // mainFrame.setVisible(false);
+        // window.setSize(new Dimension(p1.width + swingContent.getPreferredSize().width,
+        //         Math.max(p1.height, swingContent.getPreferredSize().height)));
+        // window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         return window;
     }
