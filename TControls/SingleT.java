@@ -11,7 +11,7 @@ public class SingleT {
     public int ruleOutput = 0;// num 0-1 which represents the bottom cell of the T
     public int cellSize;
     public int tspacing;
-    private ClickableCell cc;
+    public ClickableCell cc;
     private ClickableCell c0;
     private ClickableCell c1;
     private ClickableCell c2;
