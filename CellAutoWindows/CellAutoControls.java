@@ -35,6 +35,10 @@ public class CellAutoControls {
     // car.applyRule(30);
     // }
 
+    public void setRule(int newRule){
+        this.ruleField.setText(Integer.toString(newRule));
+    }
+
     public JPanel buildPanel() {
         this.ruleField = new JTextField(3);
         JPanel desc_added = SwingConstructor.list_col(new JLabel("Rule number: "), ruleField);

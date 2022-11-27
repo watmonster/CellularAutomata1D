@@ -2,7 +2,11 @@ package TControls;
 
 import processing.core.PApplet;
 import java.util.ArrayList;
+
+import CellAutoWindows.CellAutoFullWindow;
 import Helpers.Base2ToBase10;
+import Helpers.Base10ToBase2;
+import Helpers.Zeroone;
 //import java.util.Arrays;
 
 public class TControlGroup extends PApplet{
@@ -11,12 +15,14 @@ public class TControlGroup extends PApplet{
     private ArrayList<SingleT> ts = new ArrayList<SingleT>();
     public int cellSize = 50;
     public int tspacing = 10;
+    public CellAutoFullWindow cafw;
 
     public void settings(){
         size(8*(cellSize*3 + tspacing)-tspacing,cellSize*2);
     }
 
-    public TControlGroup(){
+    public TControlGroup(CellAutoFullWindow cafw){
+        this.cafw = cafw;
         for(int i = 0; i < 8; i++){
             ts.add(new SingleT(this,i, cellSize, tspacing));
         }
@@ -29,21 +35,30 @@ public class TControlGroup extends PApplet{
     }
 
     public void mouseClicked(){
-        //System.out.println(mouseX + ", " + mouseY);
+        System.out.println("Clicked in tcontrolgroup!");
         int tIndex = (int)(mouseX/(cellSize*3 + tspacing));
         System.out.println(tIndex);
         ts.get(tIndex).click();
-
-        ruleify();
+        int newRule = getRule();
+        cafw.onRuleChange(newRule);
+        System.out.println("Finished mouseClicked function in tcontrolgroup!");
     }
 
-    public void ruleify(){
+    //gets rules from t states
+    public int getRule(){
         int[] tStateList = {0,0,0,0,0,0,0,0};
         for(int i = 0; i < 8; i++){
             tStateList[i] = ts.get(i).cc.state;
         }
         int rule = Base2ToBase10.b2tb10(tStateList);
-        System.out.println(rule);
+        return rule;
+    }
+
+    public void setRule(int newRule){
+        String binaryRule = Base10ToBase2.toBinaryString(newRule);
+        for(int i = 0; i < 8; i++){
+            ts.get(i).cc.setState(Zeroone.zeroOne(binaryRule.charAt(i)));
+        }
     }
 
     // public static void main(String[] args) {

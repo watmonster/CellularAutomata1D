@@ -7,6 +7,7 @@ import Graphics.CellGrid;
 import Graphics.CellGridDisplay;
 import Helpers.Base10ToBase2;
 import processing.core.PApplet;
+import Helpers.Zeroone;
 
 public class CellAutoRunner {
 
@@ -31,13 +32,7 @@ public class CellAutoRunner {
         }
     }
 
-    public static int zeroOne(char zo){
-        if(zo == '0'){
-            return 0;
-        }else{
-            return 1;
-        }
-    }
+    
 
     public static int calcVal(CellGrid cg, int row,int col, int ruleNum){
         int valL = cg.cellAt(row-1,pythmod(col-1, numrows)).state;
@@ -45,21 +40,21 @@ public class CellAutoRunner {
         int valR = cg.cellAt(row-1,pythmod(col+1, numrows)).state;
         String ruleStr = Base10ToBase2.toBinaryString(ruleNum);
         if(valL == 1 && valC == 1 && valR == 1){
-            return zeroOne(ruleStr.charAt(0));
+            return Zeroone.zeroOne(ruleStr.charAt(0));
         }else if(valL == 1 && valC == 1 && valR == 0){
-            return zeroOne(ruleStr.charAt(1));
+            return Zeroone.zeroOne(ruleStr.charAt(1));
         }else if(valL == 1 && valC == 0 && valR == 1){
-            return zeroOne(ruleStr.charAt(2));
+            return Zeroone.zeroOne(ruleStr.charAt(2));
         }else if(valL == 1 && valC == 0 && valR == 0){
-            return zeroOne(ruleStr.charAt(3));
+            return Zeroone.zeroOne(ruleStr.charAt(3));
         }else if(valL == 0 && valC == 1 && valR == 1){
-            return zeroOne(ruleStr.charAt(4));
+            return Zeroone.zeroOne(ruleStr.charAt(4));
         }else if(valL == 0 && valC == 1 && valR == 0){
-            return zeroOne(ruleStr.charAt(5));
+            return Zeroone.zeroOne(ruleStr.charAt(5));
         }else if(valL == 0 && valC == 0 && valR == 1){
-            return zeroOne(ruleStr.charAt(6));
+            return Zeroone.zeroOne(ruleStr.charAt(6));
         }else{
-            return zeroOne(ruleStr.charAt(7));
+            return Zeroone.zeroOne(ruleStr.charAt(7));
         }
     }
 
