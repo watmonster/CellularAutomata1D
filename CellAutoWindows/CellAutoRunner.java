@@ -17,7 +17,7 @@ public class CellAutoRunner {
     public CellGridDisplay cgdisp;
     
     public CellAutoRunner(){
-        String[] processingArgs = {"MySketch"};
+        String[] processingArgs = {"CellAutoRunner"};
 		cgdisp = new CellGridDisplay(displaysize,numrows,numrows);
 		PApplet.runSketch(processingArgs, cgdisp);
     }

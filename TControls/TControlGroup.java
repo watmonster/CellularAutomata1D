@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Helpers.Base2ToBase10;
 //import java.util.Arrays;
 
-public class TControlsMain extends PApplet{
+public class TControlGroup extends PApplet{
 
     //private SingleT s0,s1,s2,s3,s4,s5,s6,s7;
     private ArrayList<SingleT> ts = new ArrayList<SingleT>();
@@ -16,7 +16,7 @@ public class TControlsMain extends PApplet{
         size(8*(cellSize*3 + tspacing)-tspacing,cellSize*2);
     }
 
-    public TControlsMain(){
+    public TControlGroup(){
         for(int i = 0; i < 8; i++){
             ts.add(new SingleT(this,i, cellSize, tspacing));
         }
@@ -46,9 +46,9 @@ public class TControlsMain extends PApplet{
         System.out.println(rule);
     }
 
-    public static void main(String[] args) {
-        String[] processingArgs = {"TControlsMain"};
-        TControlsMain tcm = new TControlsMain();
-        PApplet.runSketch(processingArgs, tcm);
-    }
+    // public static void main(String[] args) {
+    //     String[] processingArgs = {"TControlsMain"};
+    //     TControlsMain tcm = new TControlsMain();
+    //     PApplet.runSketch(processingArgs, tcm);
+    // }
 }

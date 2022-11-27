@@ -14,8 +14,9 @@ import Helpers.Logging;
 
 public class CellAutoControls {
 
-    public static CellAutoRunner car;
-    public static JTextField ruleField;
+    public CellAutoRunner car;
+    public JTextField ruleField;
+    public JPanel panel;
 
     // public void settings() {
     // size(500, 500);
@@ -24,18 +25,20 @@ public class CellAutoControls {
     // public void setup() {
 
     // }
-    public static void applyRule30() {
-        car.applyRule(30);
+
+    public CellAutoControls(CellAutoRunner cAssign) {
+        this.car = cAssign;
+        this.panel = this.buildPanel();
     }
 
-    public static void main(String[] args) {
-        car = new CellAutoRunner();
-        SwingConstructor.setPApplet(car.cgdisp);
-        ruleField = new JTextField(3);
+    // public static void applyRule30() {
+    // car.applyRule(30);
+    // }
+
+    public JPanel buildPanel() {
+        this.ruleField = new JTextField(3);
         JPanel desc_added = SwingConstructor.list_col(new JLabel("Rule number: "), ruleField);
         JButton applyRuleButton = new JButton("Apply Rule");
-        // SwingConstructor.callMethodOnClick(applyRuleButton, "applyRule30",
-        // car.cgdisp);
         applyRuleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Logging.logWithTimeStamp("Button pressed");
@@ -46,9 +49,6 @@ public class CellAutoControls {
         Dimension size_prompt = prompt.getPreferredSize();
         size_prompt.width = 150;
         prompt.setPreferredSize(size_prompt);
-        JFrame mainWindow = SwingConstructor.mergePAppletSwing(car.cgdisp, SwingConstructor.scrollable(prompt, 190, car.cgdisp.height), "East");
-        mainWindow.setVisible(true);
-        mainWindow.setTitle("Example");
-        //car.applyRule(30);
+        return prompt;
     }
 }

@@ -9,13 +9,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.lang.reflect.*;
 import processing.core.PApplet;
+import java.awt.Window;
 
 public class SwingConstructor {
-    public static PApplet genericPapplet;
+    // public static PApplet genericPapplet;
 
-    public static void setPApplet(PApplet p) {
-        genericPapplet = p;
-    }
+    // public static void setPApplet(PApplet p) {
+    // genericPapplet = p;
+    // }
 
     public static int offset = 15;
 
@@ -84,6 +85,8 @@ public class SwingConstructor {
     // PApplet programm = genericPapplet;
     public static JFrame mergePAppletSwing(PApplet programm, Container swingContent, String where) {
 
+        // SWINGCONTENT MUST BE CONTAINER BUT NOT WINDOW
+
         // Get a Container of the PApplet
         // JFrame mainFrame = (JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas)
         // programm.getSurface().getNative())
@@ -94,11 +97,14 @@ public class SwingConstructor {
 
         Container processing_content = getPAppletContent(programm);
 
-        // Create new Window
-        JFrame window = new JFrame();
+        JFrame window;
+        if (swingContent instanceof JFrame) {
+            window = (JFrame) swingContent;
+        } else {
+            window = new JFrame();
+            window.add(swingContent);
+        }
 
-        // add swingContent
-        window.add(swingContent);
         // add swingContent
         window.add(processing_content, where);
 

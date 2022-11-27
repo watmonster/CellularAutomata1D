@@ -18,7 +18,7 @@ public class Twopapplets extends PApplet {
     public void setup() {
         // Sets the PApple (Processing program) to use for the Window maker. DO NOT USE
         // IN ANOTHER CLASS!
-        SwingConstructor.setPApplet(this);
+        //SwingConstructor.setPApplet(this);
 
         for (int i = 0; i < props.length; i++) {
             props[i] = new JTextField(10);
@@ -66,11 +66,13 @@ public class Twopapplets extends PApplet {
         prompt.setPreferredSize(size_prompt);
 
         // Adds the contents of the processing window to the right (East)
-        Container mw1 = (Container) SwingConstructor.mergePAppletSwing(this, SwingConstructor.scrollable(prompt, 190, height), "East");
-        JFrame mainWindow = SwingConstructor.mergePAppletSwing(this, mw1, "East");
+        //JFrame mw1 = SwingConstructor.mergePAppletSwing(this, SwingConstructor.scrollable(prompt, 190, height), "East");
+        //JFrame mainWindow = SwingConstructor.mergePAppletSwing(this, mw1, "East"); //the bad part
 
-        mainWindow.setVisible(true);
-        mainWindow.setTitle("Example");
+        JFrame mw1 = SwingConstructor.mergePAppletPApplet(this, this, "East"); //doesn't quite work because we're merging a papplet with itself but it works ENOUGH
+
+        mw1.setVisible(true);
+        mw1.setTitle("Example");
         reset();
     }
 
