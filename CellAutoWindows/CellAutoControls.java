@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import ProcessingSwingMerge.SwingConstructor;
 import processing.core.PApplet;
 import Helpers.Logging;
@@ -17,6 +20,7 @@ public class CellAutoControls {
     public CellAutoRunner car;
     public JTextField ruleField;
     public JPanel panel;
+    public CellAutoFullWindow cafw;
 
     // public void settings() {
     // size(500, 500);
@@ -26,21 +30,40 @@ public class CellAutoControls {
 
     // }
 
-    public CellAutoControls(CellAutoRunner cAssign) {
+    public CellAutoControls(CellAutoRunner cAssign, CellAutoFullWindow cafw) {
         this.car = cAssign;
         this.panel = this.buildPanel();
+        this.cafw = cafw;
     }
 
     // public static void applyRule30() {
     // car.applyRule(30);
     // }
 
-    public void setRule(int newRule){
+    public void setRule(int newRule) {
         this.ruleField.setText(Integer.toString(newRule));
     }
 
     public JPanel buildPanel() {
         this.ruleField = new JTextField(3);
+        ruleField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                onRuleFieldChange();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                onRuleFieldChange();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                onRuleFieldChange();
+            }
+
+            private void onRuleFieldChange() {
+                cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
+                ruleField.requestFocus();
+            }
+        });
         JPanel desc_added = SwingConstructor.list_col(new JLabel("Rule number: "), ruleField);
         JButton applyRuleButton = new JButton("Apply Rule");
         applyRuleButton.addActionListener(new ActionListener() {

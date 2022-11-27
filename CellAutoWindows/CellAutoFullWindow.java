@@ -14,7 +14,7 @@ public class CellAutoFullWindow {
 
     public CellAutoFullWindow(){
         this.car = new CellAutoRunner();  // car.cgdisp
-        this.cac = new CellAutoControls(car); //cac.panel
+        this.cac = new CellAutoControls(car, this); //cac.panel
         this.tcg = new TControlGroup(this); //already a papplet
     }
 
