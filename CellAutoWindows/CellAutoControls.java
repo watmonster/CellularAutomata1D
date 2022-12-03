@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -59,9 +60,20 @@ public class CellAutoControls {
                 onRuleFieldChange();
             }
 
+            // private void onRuleFieldChange() {
+            // cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
+            // ruleField.requestFocus();
+            // }
+
             private void onRuleFieldChange() {
-                cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
-                ruleField.requestFocus();
+                Runnable doRfc = new Runnable() {
+                    @Override
+                    public void run() {
+                        cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
+                        //ruleField.requestFocus();
+                    }
+                };
+                SwingUtilities.invokeLater(doRfc);
             }
         });
         JPanel desc_added = SwingConstructor.list_col(new JLabel("Rule number: "), ruleField);

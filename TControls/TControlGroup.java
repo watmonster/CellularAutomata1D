@@ -7,6 +7,7 @@ import CellAutoWindows.CellAutoFullWindow;
 import Helpers.Base2ToBase10;
 import Helpers.Base10ToBase2;
 import Helpers.Zeroone;
+import Helpers.Logging;
 //import java.util.Arrays;
 
 public class TControlGroup extends PApplet{
@@ -55,6 +56,7 @@ public class TControlGroup extends PApplet{
     }
 
     public void setRule(int newRule){
+        Logging.logWithTimeStamp("tcg setrule called with new rule: " + newRule);
         String binaryRule = Base10ToBase2.toBinaryString(newRule);
         for(int i = 0; i < 8; i++){
             ts.get(i).cc.setState(Zeroone.zeroOne(binaryRule.charAt(i)));
