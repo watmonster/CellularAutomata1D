@@ -60,17 +60,14 @@ public class CellAutoControls {
                 onRuleFieldChange();
             }
 
-            // private void onRuleFieldChange() {
-            // cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
-            // ruleField.requestFocus();
-            // }
-
             private void onRuleFieldChange() {
+                // We have to use invokeLater to avoid weirdness, found this approach in
+                // https://stackoverflow.com/a/15206902
                 Runnable doRfc = new Runnable() {
                     @Override
                     public void run() {
                         cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
-                        //ruleField.requestFocus();
+                        // ruleField.requestFocus();
                     }
                 };
                 SwingUtilities.invokeLater(doRfc);
