@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import Helpers.Logging;
+
 import java.lang.reflect.*;
 import processing.core.PApplet;
 import java.awt.Window;
@@ -111,11 +114,15 @@ public class SwingConstructor {
         // Get rid of evidence
         // mainFrame.setVisible(false);
         if (where == "West" || where == "East") {
-            window.setSize(new Dimension(programm.width + swingContent.getPreferredSize().width,
-                    Math.max(programm.height, swingContent.getPreferredSize().height)));
+            int w = programm.width + swingContent.getPreferredSize().width;
+            int h = Math.max(programm.height, swingContent.getPreferredSize().height);
+            Logging.logWithTimeStamp("Setting merged window size: (east/west) Width: " + w + ", height: " + h);
+            window.setSize(new Dimension(w, h));
         } else {
-            window.setSize(new Dimension(Math.max(programm.width, swingContent.getPreferredSize().width),
-                    programm.height + swingContent.getPreferredSize().height));
+            int w = Math.max(programm.width, swingContent.getPreferredSize().width);
+            int h = programm.height + swingContent.getPreferredSize().height;
+            Logging.logWithTimeStamp("Setting merged window size: (north/south) Width: " + w + ", height: " + h);
+            window.setSize(new Dimension(w, h));
         }
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

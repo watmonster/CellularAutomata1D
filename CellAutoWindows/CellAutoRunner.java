@@ -12,7 +12,7 @@ import Helpers.Zeroone;
 
 public class CellAutoRunner {
 
-    public static int displaysize = 1000;
+    public static int displaysize = 800;
     public static int numrows = 101;
     // public static int rule = 30;
     public static ArrayList<Integer> onecols = new ArrayList<Integer>(Arrays.asList(50));
