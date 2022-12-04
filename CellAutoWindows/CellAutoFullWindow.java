@@ -1,6 +1,12 @@
 package CellAutoWindows;
 
+import java.awt.Container;
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import ProcessingSwingMerge.SwingConstructor;
 import TControls.TControlGroup;
 import processing.core.PApplet;
@@ -31,9 +37,28 @@ public class CellAutoFullWindow {
     }
 
     public JFrame buildWindow() {
-        JFrame merge1 = SwingConstructor.mergePAppletSwing(car.cgdisp, cac.panel, "East");
-        JFrame merge2 = SwingConstructor.mergePAppletSwing(tcg, merge1, "North");
-        return merge2;
+        //JPanel merge1 = SwingConstructor.mergePAppletSwing(car.cgdisp, cac.panel, "East");
+        Container cgdispcontainer = SwingConstructor.getPAppletContent(car.cgdisp);
+        JPanel merge1 = new JPanel();
+        merge1.setLayout(new BoxLayout(merge1, BoxLayout.X_AXIS));
+        merge1.add(cac.panel);
+        merge1.add(cgdispcontainer);
+        int w = car.cgdisp.width + cac.panel.getPreferredSize().width;
+        int h = Math.max(car.cgdisp.height, cac.panel.getPreferredSize().height);
+        merge1.setSize(new Dimension(w,h));
+        //JPanel merge2 = SwingConstructor.mergePAppletSwing(tcg, merge1, "North");
+        Container tcgcontainer = SwingConstructor.getPAppletContent(tcg);
+        JPanel merge2 = new JPanel();
+        merge2.setLayout(new BoxLayout(merge2, BoxLayout.Y_AXIS));
+        merge2.add(tcgcontainer);
+        merge2.add(merge1);
+        int w2 = Math.max(tcg.width, merge1.getPreferredSize().width);
+        int h2 = tcg.height + merge1.getPreferredSize().height;
+        merge2.setSize(new Dimension(w2, h2));
+        JFrame merge3 = new JFrame();
+        merge3.add(merge2);
+        merge3.setSize(new Dimension(w2, h2+30));
+        return merge3;
     }
 
     public static void main(String[] args) {

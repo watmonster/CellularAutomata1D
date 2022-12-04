@@ -3,6 +3,7 @@ package ProcessingSwingMerge;
 
 import java.awt.Container;
 import java.awt.Dimension;
+//import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,7 +13,7 @@ import Helpers.Logging;
 
 import java.lang.reflect.*;
 import processing.core.PApplet;
-import java.awt.Window;
+//import java.awt.Window;
 
 public class SwingConstructor {
     // public static PApplet genericPapplet;
@@ -86,7 +87,7 @@ public class SwingConstructor {
 
     // public static JFrame merge(Container swingContent, String where) {
     // PApplet programm = genericPapplet;
-    public static JFrame mergePAppletSwing(PApplet programm, Container swingContent, String where) {
+    public static JPanel mergePAppletSwing(PApplet programm, Container swingContent, String where) {
 
         // SWINGCONTENT MUST BE CONTAINER BUT NOT WINDOW
 
@@ -100,11 +101,11 @@ public class SwingConstructor {
 
         Container processing_content = getPAppletContent(programm);
 
-        JFrame window;
-        if (swingContent instanceof JFrame) {
-            window = (JFrame) swingContent;
+        JPanel window;
+        if (swingContent instanceof JPanel) {
+            window = (JPanel) swingContent;
         } else {
-            window = new JFrame();
+            window = new JPanel();
             window.add(swingContent);
         }
 
@@ -124,7 +125,14 @@ public class SwingConstructor {
             Logging.logWithTimeStamp("Setting merged window size: (north/south) Width: " + w + ", height: " + h);
             window.setSize(new Dimension(w, h));
         }
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // window.setLayout(new java.awt.BorderLayout());
+
+        // window.pack();
+
+        Logging.logWithTimeStamp("Actual window size (maybe): Width: " + window.getWidth() + ", height: " + window.getHeight());
 
         return window;
     }
