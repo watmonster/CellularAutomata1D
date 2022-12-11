@@ -1,6 +1,6 @@
 package Helpers;
 
-public class Base2ToBase10 {
+public class Base2ToBase10 { //BASE 3 TODO
     public static int zeroOne(char zo){
         if(zo == '0'){
             return 0;

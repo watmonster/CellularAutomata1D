@@ -1,6 +1,6 @@
 package Helpers;
 
-public class Zeroone {
+public class Zeroone { //BASE 3 TODO
     public static int zeroOne(char zo){
         if(zo == '0'){
             return 0;

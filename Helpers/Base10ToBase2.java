@@ -1,6 +1,6 @@
 package Helpers;
 
-public class Base10ToBase2{
+public class Base10ToBase2{ //BASE 3 TODO
     public static String addzeros(String str){
         if(str.length() == 0){
             return "00000000";
