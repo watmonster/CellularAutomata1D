@@ -31,16 +31,13 @@ public class Cell{
     public void render(){
         if(state==0){
             sketch.fill(255);
-            //System.out.println("filled white!");
         }else{
             sketch.fill(0);
-            //System.out.println("filled black!");
         }
         sketch.rect((float)col*sizeInt,(float)row*sizeInt,(float)sizeInt,(float)sizeInt);
     }
 
     public void changeColor(){
-        //TODO: make it change color by itself
         if(state == 0){
             state = 1;
         }else if(state == 1){

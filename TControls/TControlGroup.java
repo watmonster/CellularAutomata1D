@@ -8,11 +8,9 @@ import Helpers.Base2ToBase10;
 import Helpers.Base10ToBase2;
 import Helpers.Zeroone;
 import Helpers.Logging;
-//import java.util.Arrays;
 
 public class TControlGroup extends PApplet {
 
-    // private SingleT s0,s1,s2,s3,s4,s5,s6,s7;
     private ArrayList<SingleT> ts = new ArrayList<SingleT>();
     public int cellSize = 40;
     public int tspacing = 10;
@@ -36,16 +34,10 @@ public class TControlGroup extends PApplet {
 
     public void draw() {
         strokeWeight(1);
-        stroke(0,0,0);
+        stroke(0, 0, 0);
         for (SingleT i : ts) {
             i.renderT();
         }
-        // fill(255,255,255,0);
-        // stroke(255,0,0);
-        // strokeWeight(10);
-        // rect(0,0,this.w,this.h);
-        // strokeWeight(1);
-        // stroke(0,0,0);
     }
 
     public void mouseClicked() {
@@ -75,10 +67,4 @@ public class TControlGroup extends PApplet {
             ts.get(i).cc.setState(Zeroone.zeroOne(binaryRule.charAt(i)));
         }
     }
-
-    // public static void main(String[] args) {
-    // String[] processingArgs = {"TControlsMain"};
-    // TControlsMain tcm = new TControlsMain();
-    // PApplet.runSketch(processingArgs, tcm);
-    // }
 }

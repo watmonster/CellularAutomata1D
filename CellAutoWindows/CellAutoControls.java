@@ -23,24 +23,12 @@ public class CellAutoControls {
     public JPanel panel;
     public CellAutoFullWindow cafw;
 
-    // public void settings() {
-    // size(500, 500);
-    // }
-
-    // public void setup() {
-
-    // }
-
     public CellAutoControls(CellAutoRunner cAssign, CellAutoFullWindow cafw) {
         this.car = cAssign;
         this.panel = this.buildPanel();
         Logging.logWithTimeStamp("panel width: " + this.panel.getWidth() + ", height: " +this.panel.getHeight());
         this.cafw = cafw;
     }
-
-    // public static void applyRule30() {
-    // car.applyRule(30);
-    // }
 
     public void setRule(int newRule) {
         this.ruleField.setText(Integer.toString(newRule));
@@ -68,7 +56,6 @@ public class CellAutoControls {
                     @Override
                     public void run() {
                         cafw.onRuleChange(Integer.parseInt(ruleField.getText()));
-                        // ruleField.requestFocus();
                     }
                 };
                 SwingUtilities.invokeLater(doRfc);

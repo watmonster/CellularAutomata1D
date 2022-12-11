@@ -14,8 +14,6 @@ public class CellAutoRunner {
 
     public CellGridDisplay cgdisp;
     public static int numrows = 101;
-    //public int displaysize;
-    // public static int rule = 30;
     public int cellSize = 7;
     public static ArrayList<Integer> onecols = new ArrayList<Integer>(Arrays.asList(50));
 
@@ -69,7 +67,6 @@ public class CellAutoRunner {
         }
 
         // make the middle top cell black
-        // mySketch.cg.cellAt(0,numrows/2).changeColor();
         for (Integer i : onecols) {
             cgdisp.cg.cellAt(0, i).changeColor();
         }
@@ -82,8 +79,6 @@ public class CellAutoRunner {
                 }
             }
         }
-        // for rownum = 0 rownum < numrows rownum ++
-        // apply the rule to row rownum to make row rownum+1
     }
 
 }

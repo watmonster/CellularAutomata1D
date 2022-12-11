@@ -29,14 +29,5 @@ public class CellGridDisplay extends PApplet{
     public void draw(){
         cg.render();
     }
-
-    // public void mouseClicked(){
-    //     System.out.println("x = " + mouseX + ", y = "+ mouseY);
-    //     int col = floor(mouseX/(cellSize));
-    //     int row = floor(mouseY/(cellSize));
-    //     System.out.println(col + ", " + row);
-    //     cg.cellAt(row,col).changeColor();
-    // }
-
     
 }

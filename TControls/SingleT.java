@@ -22,16 +22,12 @@ public class SingleT {
         this.sketch = sketch;
         this.cellSize = cellSize;
         this.tspacing = tspacing;
-        int xoffset = ruleInput*(cellSize*3 + tspacing);
+        int xoffset = ruleInput * (cellSize * 3 + tspacing);
         this.cc = new ClickableCell(this.sketch, 0, this.cellSize, 1, 1, xoffset, 0);
         this.c0 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(0), this.cellSize, 0, 0, xoffset, 0);
         this.c1 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(1), this.cellSize, 1, 0, xoffset, 0);
         this.c2 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(2), this.cellSize, 2, 0, xoffset, 0);
     }
-
-    // public void settings(){
-    // size(150,100);
-    // }
 
     public ArrayList<Integer> ruleInputSet(int ri) {
         if (ri == 0) {
@@ -57,20 +53,10 @@ public class SingleT {
         cc.mc();
     }
 
-    // public static void runthething() {
-    // String[] processingArgs = { "SingleT" };
-    // SingleT singleT = new SingleT(this.sketch, ruleInput);
-    // PApplet.runSketch(processingArgs, singleT);
-    // }
-
     public void renderT() {
         cc.render();
         c0.render();
         c1.render();
         c2.render();
     }
-
-    // public static void main(String[] args) {
-    // runthething();
-    // }
 }

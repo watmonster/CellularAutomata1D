@@ -35,10 +35,8 @@ public class ClickableCell {
     public void render() {
         if (state == 0) {
             sketch.fill(255);
-            // System.out.println("filled white!");
         } else {
             sketch.fill(0);
-            // System.out.println("filled black!");
         }
         sketch.rect((float) col * cellSize + xoffset, (float) row * cellSize + yoffset, (float) cellSize,
                 (float) cellSize);

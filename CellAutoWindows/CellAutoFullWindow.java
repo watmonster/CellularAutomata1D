@@ -37,17 +37,14 @@ public class CellAutoFullWindow {
     }
 
     public JFrame buildWindow() {
-        //JPanel merge1 = SwingConstructor.mergePAppletSwing(car.cgdisp, cac.panel, "East");
         Container cgdispcontainer = SwingConstructor.getPAppletContent(car.cgdisp);
         JPanel merge1 = new JPanel();
         merge1.setLayout(new BoxLayout(merge1, BoxLayout.X_AXIS));
         merge1.add(cac.panel);
         merge1.add(cgdispcontainer);
         int w = car.cgdisp.width + cac.panel.getPreferredSize().width;
-        //int h = Math.max(car.cgdisp.height, cac.panel.getPreferredSize().height);
         int h = car.cgdisp.height;
         merge1.setSize(new Dimension(w,h));
-        //JPanel merge2 = SwingConstructor.mergePAppletSwing(tcg, merge1, "North");
         Container tcgcontainer = SwingConstructor.getPAppletContent(tcg);
         JPanel merge2 = new JPanel();
         merge2.setLayout(new BoxLayout(merge2, BoxLayout.Y_AXIS));
@@ -59,8 +56,6 @@ public class CellAutoFullWindow {
         JFrame merge3 = new JFrame();
         merge3.add(merge2);
         merge3.setSize(new Dimension(w2, h2+80));
-        //merge3.pack();
-        //System.out.println(h2+30);
         return merge3;
     }
 
