@@ -1,5 +1,6 @@
 package Graphics;
 
+import Helpers.Logging;
 import processing.core.PApplet;
 
 public class CellGridDisplay extends PApplet{
@@ -11,16 +12,18 @@ public class CellGridDisplay extends PApplet{
     public int cols;
     public int cellSize;
 
-    public CellGridDisplay(int psize, int rows, int cols){
+    public CellGridDisplay(int psize, int rows, int cols, int cellSize){
         this.psize = psize;
         this.rows = rows;
         this.cols = cols;
-        this.cellSize = (int)psize/rows;
+        this.cellSize = cellSize;
+        System.out.println("cell size: " + this.cellSize);
         this.cg = new CellGrid(this,this.rows,this.cols,cellSize);
     }
 
     public void settings(){
         size(psize,psize);
+        Logging.logWithTimeStamp("cgdisp width: " + this.width + " , height: " + this.height);
     }
 
     public void draw(){

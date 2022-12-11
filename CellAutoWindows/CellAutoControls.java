@@ -34,6 +34,7 @@ public class CellAutoControls {
     public CellAutoControls(CellAutoRunner cAssign, CellAutoFullWindow cafw) {
         this.car = cAssign;
         this.panel = this.buildPanel();
+        Logging.logWithTimeStamp("panel width: " + this.panel.getWidth() + ", height: " +this.panel.getHeight());
         this.cafw = cafw;
     }
 
