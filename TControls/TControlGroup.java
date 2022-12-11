@@ -22,7 +22,7 @@ public class TControlGroup extends PApplet {
 
     public void settings() {
         this.w = 8 * (cellSize * 3 + tspacing) - tspacing;
-        this.h = cellSize * 2;
+        this.h = cellSize * 2 + 1;
         Logging.logWithTimeStamp("tcg Width: " + w + ", height: " + h);
         size(w, h);
     }
@@ -40,12 +40,12 @@ public class TControlGroup extends PApplet {
         for (SingleT i : ts) {
             i.renderT();
         }
-        fill(255,255,255,0);
-        stroke(255,0,0);
-        strokeWeight(10);
-        rect(0,0,this.w,this.h);
-        strokeWeight(1);
-        stroke(0,0,0);
+        // fill(255,255,255,0);
+        // stroke(255,0,0);
+        // strokeWeight(10);
+        // rect(0,0,this.w,this.h);
+        // strokeWeight(1);
+        // stroke(0,0,0);
     }
 
     public void mouseClicked() {
