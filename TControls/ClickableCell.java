@@ -24,7 +24,7 @@ public class ClickableCell {
         this.yoffset = yoffset;
     }
 
-    public void setState(int newState) {
+    public void setState(int newState) { //BASE 3 TODO
         if (newState == 0 || newState == 1) {
             this.state = newState;
         } else {
@@ -32,7 +32,7 @@ public class ClickableCell {
         }
     }
 
-    public void render() {
+    public void render() { //BASE 3 TODO
         if (state == 0) {
             sketch.fill(255);
         } else {
@@ -42,11 +42,11 @@ public class ClickableCell {
                 (float) cellSize);
     }
 
-    public void mc() {
+    public void mc() { //BASE 3 TODO
         this.changeColor();
     }
 
-    public void changeColor() {
+    public void changeColor() { //BASE 3 TODO
         if (state == 0) {
             state = 1;
         } else if (state == 1) {

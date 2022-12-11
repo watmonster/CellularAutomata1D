@@ -32,7 +32,7 @@ public class CellAutoRunner {
         }
     }
 
-    public static int calcVal(CellGrid cg, int row, int col, int ruleNum) {
+    public static int calcVal(CellGrid cg, int row, int col, int ruleNum) { //BASE 3 TODO
         int valL = cg.cellAt(row - 1, pythmod(col - 1, numrows)).state;
         int valC = cg.cellAt(row - 1, pythmod(col, numrows)).state;
         int valR = cg.cellAt(row - 1, pythmod(col + 1, numrows)).state;
@@ -72,7 +72,7 @@ public class CellAutoRunner {
         }
 
         // apply a rule to the first row to make the second row
-        for (int row = 1; row < numrows; row++) {
+        for (int row = 1; row < numrows; row++) { //BASE 3 TODO
             for (int col = 0; col < numrows; col++) {
                 if (calcVal(cgdisp.cg, row, col, ruleNum) == 1) {
                     cgdisp.cg.cellAt(row, col).changeColor();

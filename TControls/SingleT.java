@@ -29,7 +29,7 @@ public class SingleT {
         this.c2 = new ClickableCell(this.sketch, ruleInputSet(ruleInput).get(2), this.cellSize, 2, 0, xoffset, 0);
     }
 
-    public ArrayList<Integer> ruleInputSet(int ri) {
+    public ArrayList<Integer> ruleInputSet(int ri) { //BASE 3 TODO
         if (ri == 0) {
             return new ArrayList<Integer>(Arrays.asList(1, 1, 1));
         } else if (ri == 1) {

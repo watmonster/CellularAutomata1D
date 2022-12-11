@@ -9,7 +9,7 @@ import Helpers.Base10ToBase2;
 import Helpers.Zeroone;
 import Helpers.Logging;
 
-public class TControlGroup extends PApplet {
+public class TControlGroup extends PApplet { //BASE 3 TODO
 
     private ArrayList<SingleT> ts = new ArrayList<SingleT>();
     public int cellSize = 40;
